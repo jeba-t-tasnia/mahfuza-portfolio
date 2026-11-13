@@ -3,344 +3,548 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mahfuza Siddika Khan – Portfolio</title>
-
-  <!-- Google Fonts (Inter) with fallback -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    /* --------------------------------------------------------------
-       CSS Variables (light / dark colour palette)
-       -------------------------------------------------------------- */
-    :root {
-      --bg: #fafafa;
-      --text: #212529;
-      --muted: #6c757d;
-      --accent: #2c3e50;
-      --accent-light: #3498db;
-      --card: #ffffff;
-      --border: #dee2e6;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #121212;
-        --text: #e0e0e0;
-        --muted: #b0b0b0;
-        --accent: #3498db;
-        --card: #1e1e1e;
-        --border: #333333;
-      }
-    }
-
-    /* --------------------------------------------------------------
-       Base resets
-       -------------------------------------------------------------- */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
-                   "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    a:hover {
-      color: var(--accent-light);
-    }
-
-    img {
-      max-width: 100%;
-      height: auto;
-    }
-
-    /* --------------------------------------------------------------
-       Navigation – sticky, responsive
-       -------------------------------------------------------------- */
-    nav {
-      position: sticky;
-      top: 0;
-      background: var(--card);
-      z-index: 100;
-      backdrop-filter: blur(6px);
-    }
-
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .logo {
-      font-weight: 700;
-      font-size: 1.25rem;
-      color: var(--accent);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1.5rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-size: 0.95rem;
-      color: var(--text);
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover {
-      color: var(--accent-light);
-    }
-
-    .theme-toggle {
-      background: none;
-      border: none;
-      font-size: 1rem;
-      cursor: pointer;
-      color: var(--muted);
-    }
-
-    .theme-toggle:hover {
-      color: var(--accent);
-    }
-
-    /* --------------------------------------------------------------
-       Hero section
-       -------------------------------------------------------------- */
-    #hero {
-      min-height: 60vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 2rem;
-    }
-
-    .hero-title {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .hero-tagline {
-      font-size: 1.2rem;
-      color: var(--muted);
-      margin-bottom: 1rem;
-    }
-
-    .hero-intro {
-      max-width: 600px;
-      font-size: 1rem;
-      color: var(--muted);
-    }
-
-    /* --------------------------------------------------------------
-       Generic sections
-       -------------------------------------------------------------- */
-    section {
-      padding: 3rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    section h2 {
-      font-size: 1.75rem;
-      margin-bottom: 1rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 2px solid var(--border);
-    }
-
-    section h3 {
-      font-size: 1.25rem;
-      margin-top: 1.5rem;
-    }
-
-    /* --------------------------------------------------------------
-       Research cards grid
-       -------------------------------------------------------------- */
-    .research-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .research-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.5rem;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .research-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 0.25rem 0.5rem;
-      background: var(--accent);
-      color: #fff;
-      border-radius: 4px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      margin-right: 0.5rem;
-    }
-
-    .badge.presented {
-      background: #27ae60;
-    }
-
-    .badge.in-writing {
-      background: #e67e22;
-    }
-
-    /* --------------------------------------------------------------
-       Awards list
-       -------------------------------------------------------------- */
-    .awards-list {
-      list-style: none;
-    }
-
-    .awards-list li {
-      margin-bottom: 0.75rem;
-      padding-left: 1.2rem;
-      position: relative;
-    }
-
-    .awards-list li::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0.15rem;
-      width: 4px;
-      height: 4px;
-      background: var(--accent);
-      border-radius: 50%;
-    }
-
-    /* --------------------------------------------------------------
-       Skills tags
-       -------------------------------------------------------------- */
-    .skills-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .skill-tag {
-      background: var(--border);
-      color: var(--text);
-      padding: 0.4rem 0.8rem;
-      border-radius: 4px;
-      font-size: 0.85rem;
-    }
-
-    /* --------------------------------------------------------------
-       Contact links
-       -------------------------------------------------------------- */
-    .contact-links a {
-      display: block;
-      margin-bottom: 0.8rem;
-      font-size: 1rem;
-    }
-
-    /* --------------------------------------------------------------
-       Placeholder flag (red italic)
-       -------------------------------------------------------------- */
-    .placeholder {
-      color: #e74c3c;   /* bright red, clearly flagged */
-      font-style: italic;
-    }
-
-    /* --------------------------------------------------------------
-       Footer
-       -------------------------------------------------------------- */
-    footer {
-      text-align: center;
-      padding: 2rem;
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    /* --------------------------------------------------------------
-       Smooth scroll (only if the browser supports it)
-       -------------------------------------------------------------- */
-    html {
-      scroll-behavior: smooth;
-    }
-
-    /* --------------------------------------------------------------
-       Theme‑toggle logic (stores preference in localStorage)
-       -------------------------------------------------------------- */
-    <script>
-      (function() {
-        const html = document.documentElement;
-        const toggle = document.querySelector('.theme-toggle');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const saved = localStorage.getItem('theme');
-        if (saved) {
-          html.setAttribute('data-theme', saved);
-        } else {
-          html.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
-        }
-        toggle.addEventListener('click', () => {
-          const current = html.getAttribute('data-theme');
-          const next = current === 'dark' ? 'light' : 'dark';
-          html.setAttribute('data-theme', next);
-          localStorage.setItem('theme', next);
-        });
-      })();
-    </script>
-  </style>
+  <title>Mahfuza Siddika Khan - Academic Portfolio</title>
+  <meta name="description" content="Academic portfolio of Mahfuza Siddika Khan, Bachelor of Pharmacy undergraduate at Manarat International University, focusing on antimicrobial resistance, antibiotic susceptibility testing, and women's health research">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- ========================= NAV ========================= -->
-  <nav>
-    <div class="navbar">
-      <div class="logo">Mahfuza Siddika Khan</div>
-      <ul class="nav-links">
-        <li><a href="#hero">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#research">Research</a></li>
-        <li><a href="#awards">Awards</a></li>
-        <li><a href="#leadership">Leadership</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#contact">Contact</a></li>
+  <!-- Skip Link for Accessibility -->
+  <a class="skip-link" href="#home">Skip to main content</a>
+
+  <!-- ===== Navigation ===== -->
+  <nav aria-label="Main navigation" class="navbar" role="navigation">
+    <div class="navbar__inner">
+      <a href="#home" class="navbar__logo">Mahfuza Siddika Khan</a>
+      <ul class="navbar__links" role="menubar">
+        <li role="none"><a href="#home" class="navbar__link" role="menuitem">Home</a></li>
+        <li role="none"><a href="#about" class="navbar__link" role="menuitem">About</a></li>
+        <li role="none"><a href="#education" class="navbar__link" role="menuitem">Education</a></li>
+        <li role="none"><a href="#research-interests" class="navbar__link" role="menuitem">Research Interests</a></li>
+        <li role="none"><a href="#projects" class="navbar__link" role="menuitem">Projects</a></li>
+        <li role="none"><a href="#leadership" class="navbar__link" role="menuitem">Leadership</a></li>
+        <li role="none"><a href="#awards" class="navbar__link" role="menuitem">Awards</a></li>
+        <li role="none"><a href="#skills" class="navbar__link" role="menuitem">Skills</a></li>
+        <li role="none"><a href="#contact" class="navbar__link" role="menuitem">Contact</a></li>
       </ul>
-      <button class="theme-toggle" aria-label="Toggle theme">🌓</button>
+
+      <!-- Mobile Navigation Button -->
+      <button class="mobile-nav__btn" aria-label="Open navigation menu">
+        ☰
+      </button>
     </div>
   </nav>
 
-  <!-- ========================= HERO ========================= -->
-  <section id="hero">
-    <div>
-      <h1 class="hero-title">Mahfuza Siddika Khan</h1>
-      <p class="hero-tagline">
-        Pharmacy student | Aspiring researcher in antimicrobial resistance and women's health
-      </p>
-      <p class="hero-intro">
-        Third‑year Pharmacy student at Manarat International University, Dhaka.
-        Passionate about drug discovery, antimicrobial resistance, and women's health research.
-      </p>
+  <!-- ===== Mobile Navigation Menu ===== -->
+  <div class="mobile-nav" id="main-content" role="navigation">
+    <button class="mobile-nav__close" aria-label="Close navigation menu">
+      ✕
+    </button>
+    <ul class="mobile-nav__list">
+      <li><a href="#about" class="mobile-nav__link">About</a></li>
+      <li><a href="#education" class="mobile-nav__link">Education</a></li>
+      <li><a href="#research-interests" class="mobile-nav__link">Research Interests</a></li>
+      <li><a href="#projects" class="mobile-nav__link">Projects</a></li>
+      <li><a href="#leadership" class="mobile-nav__link">Leadership</a></li>
+      <li><a href="#awards" class="mobile-nav__link">Awards</a></li>
+      <li><a href="#skills" class="mobile-nav__link">Skills</a></li>
+      <li><a href="#contact" class="mobile-nav__link">Contact</a></li>
+    </ul>
+    <div class="mobile-nav__social">
+      <a href="https://www.linkedin.com/in/mahfuza-siddika-khan-b1a396337/" class="mobile-nav__socialLink" aria-label="LinkedIn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M16 8a6 6 0 0 0-12 0v6h12V8zm1.4-4.0L22.6 3.4a.75.75 0 0 0 .1-1.05H5.4a.75.75 0 0 0-.7.3L.4 10.5a.75.75 0 0 0 .1 1.05h14.7a.75.75 0 0 0 .7-.25.75.75 0 0 0 .1-1.05m-8.2 13.8L6.8 17.9a.75.75 0 0 0 .05.65h8.6a.75.75 0 0 0 .05-.65L9.8 15.5Z"/>
+        </svg>
+      </a>
+      <a href="mailto:mahfuzasiddikakhan@gmail.com" class="mobile-nav__socialLink" aria-label="Email">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2m2-2v8h12V6H6z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- ===== Hero Section ===== -->
+  <header class="hero" id="home" aria-labelledby="hero-name">
+    <div class="hero__container">
+      <div class="hero__content">
+        <!-- Profile Photo -->
+        <img src="assets/images/profile-photo.jpg" alt="Mahfuza Siddika Khan - Pharmacy Undergraduate" class="hero__photo" loading="lazy">
+
+        <div>
+          <h1 class="hero__name" id="hero-name">Mahfuza Siddika Khan</h1>
+          <p class="hero__tagline">Pharmacy Undergraduate | Aspiring Researcher in Antimicrobial Resistance and Women's Health</p>
+          <p class="hero__description">I am a Pharmacy undergraduate at Manarat International University with a growing interest in antimicrobial resistance, antibiotic susceptibility testing, and women's health research. I am particularly interested in exploring scientific approaches that can contribute to better healthcare and pharmaceutical research.</p>
+
+          <!-- Buttons -->
+          <div class="hero__buttons">
+            <a href="#projects" class="btn btn--primary">Explore My Research</a>
+            <a href="#contact" class="btn btn--secondary">Get in Touch</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== About Me ===== -->
+  <section class="about" id="about" aria-labelledby="about-me">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title" id="about-me">About Me</h2>
+        <p class="section__subtitle">Pharmacy undergraduate with a strong foundation in pharmaceutical sciences and a growing focus on biomedical research.</p>
+      </div>
+
+      <div class="about__grid">
+        <div class="about__text">
+          <p>I am a Pharmacy undergraduate at Manarat International University, Dhaka, Bangladesh, with an academic interest in pharmaceutical sciences and biomedical research. My interests include antimicrobial resistance, antibiotic susceptibility testing, and women's health research. I am particularly interested in understanding disease mechanisms and exploring emerging directions in pharmaceutical and biomedical research.</p>
+
+          <p>Beyond academics, I actively engage in student leadership, academic organizations, and scientific outreach. I believe in continuous learning, interdisciplinary collaboration, scientific communication, and evidence-based knowledge. My long-term goal is to pursue advanced research opportunities and contribute meaningfully to the scientific community, particularly in the areas of antimicrobial resistance and women's health.</p>
+
+          <p>I value interdisciplinary learning, academic writing, and continuous academic development. I aim to build a credible research profile that can contribute to improved healthcare outcomes and pharmaceutical research practices.</p>
+        </div>
+
+        <div class="about__photo">
+          <img src="assets/images/profile-photo.jpg" alt="Mahfuza Siddika Khan" loading="lazy">
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- ========================= ABOUT ========================= -->
+  <!-- ===== Education ===== -->
+  <section class="education" id="education" aria-labelledby="education-title">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title" id="education-title">Education</h2>
+      </div>
+
+      <div class="education__timeline">
+        <div class="education__item">
+          <div class="education__degree">Bachelor of Pharmacy (B.Pharm)</div>
+          <div class="education__institution">Manarat International University</div>
+          <div class="education__department">Department of Pharmacy</div>
+          <div class="education__period">Dhaka, Bangladesh</div>
+          <div class="education__current-status">3rd Semester (Current)</div>
+          <div class="education__duration">[Add admission year – PLACEHOLDER]</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Research Interests ===== -->
+  <section class="research-interests" id="research-interests" aria-labelledby="research-interests-title">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title" id="research-interests-title">Research Interests</h2>
+      </div>
+
+      <div class="research__intro">
+        <p>My research focus spans antimicrobial resistance, antibiotic susceptibility testing, computational pharmaceutical research, and women's health. I am particularly interested in the intersection of these areas and their potential impact on clinical practice and public health.</p>
+      </div>
+
+      <div class="research__tags">
+        <span class="tag">Antimicrobial Resistance (AMR)</span>
+        <span class="tag">Antibiotic Resistance</span>
+        <span class="tag">Antimicrobial Susceptibility Testing</span>
+        <span class="tag">Computational Pharmaceutical Research</span>
+        <span class="tag">Women's Health</span>
+        <span class="tag">PCOS Research</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Research and Academic Projects ===== -->
+  <section class="projects" id="projects" aria-labelledby="projects-title">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title" id="projects-title">Research and Academic Projects</h2>
+      </div>
+
+      <div class="projects__intro">
+        <p>A collection of academic projects, research initiatives, and learning resources developed during my undergraduate studies.</p>
+      </div>
+
+      <div class="projects__grid">
+        <!-- Project 1: Antibiotic Resistance Research Project -->
+        <article class="projectCard">
+          <div class="projectCard__image">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--charcoal);">
+              <rect x="3" y="3" width="7" height="7"/>
+              <rect x="14" y="3" width="7" height="7"/>
+              <rect x="25" y="3" width="7" height="7"/>
+              <rect x="3" y="14" width="7" height="7"/>
+              <rect x="14" y="14" width="7" height="7"/>
+              <rect x="25" y="14" width="7" height="7"/>
+              <rect x="3" y="25" width="7" height="7"/>
+              <rect x="14" y="25" width="7" height="7"/>
+              <rect x="25" y="25" width="7" height="7"/>
+            </svg>
+          </div>
+          <div class="projectCard__content">
+            <h3 class="projectCard__title">A Computational Framework for Metabolism-Aware Antimicrobial Susceptibility Testing: Addressing the Metabolic Blind Spot in Clinical Decision Support</h3>
+            <p class="projectCard__description">
+              Research Area: Antimicrobial Resistance
+              <br>
+              Project Type: Undergraduate Research Project
+              <br>
+              Contribution: Co-authored
+              <br>
+              Current Status: <span class="status-badge status-badge--in-writing">In Writing</span>
+            </p>
+
+            <div class="projectCard__tags">
+              <span class="projectCard__tag">Antimicrobial Resistance</span>
+              <span class="projectCard__tag">Undergraduate Research</span>
+              <span class="projectCard__tag">Computational</span>
+            </div>
+
+            <details class="projectCard__details">
+              <summary>Research Overview</summary>
+              <p>Metabolism-aware antimicrobial susceptibility testing (AST) addresses a critical blind spot in clinical decision support: many bacterial metabolic processes influence antibiotic efficacy, yet traditional AST methods often ignore metabolic activity. By integrating metabolic modeling with susceptibility testing, this approach aims to predict antibiotic effectiveness more accurately, particularly for bacteria with active metabolism or those entering stationary phase. Addressing this metabolic blind spot could improve treatment outcomes, reduce antibiotic overuse, and combat the rise of resistant strains.</p>
+              <p>[ADD KEY FINDING]</p>
+              <p>[ADD METHODOLOGY]</p>
+              <p>[ADD PERSONAL RESEARCH CONTRIBUTION]</p>
+            </details>
+
+            <div class="projectCard__conference-info">
+              <div>
+                <p><strong>Conference:</strong> International Conference on AI Across Disciplines (ICAAD 2026)</p>
+                <p><strong>Paper ID:</strong> 556</p>
+                <p><strong>Location:</strong> Konya, Türkiye</p>
+                <p><strong>Dates:</strong> October 23–25, 2026</p>
+              </div>
+              <div>
+                <p><strong>Presentation:</strong> Online Poster (5-minute Video Presentation required)</p>
+                <p><strong>Acceptance Status:</strong> Accepted</p>
+              </div>
+            </div>
+
+            <div class="projectCard__placeholders">
+              <p>[ADD POSTER LINK]</p>
+              <p>[ADD PRESENTATION VIDEO LINK]</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2: Women's Health and PCOS Poster -->
+        <article class="projectCard">
+          <div class="projectCard__image">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--charcoal);">
+              <rect x="3" y="3" width="7" height="7"/>
+              <rect x="14" y="3" width="7" height="7"/>
+              <rect x="25" y="3" width="7" height="7"/>
+              <rect x="3" y="14" width="7" height="7"/>
+              <rect x="14" y="14" width="7" height="7"/>
+              <rect x="25" y="14" width="7" height="7"/>
+              <rect x="3" y="25" width="7" height="7"/>
+              <rect x="14" y="25" width="7" height="7"/>
+              <rect x="25" y="25" width="7" height="7"/>
+            </svg>
+          </div>
+          <div class="projectCard__content">
+            <h3 class="projectCard__title">Unhealthy Lifestyle, Sleep Disturbance and Polycystic Ovary Syndrome (PCOS)</h3>
+            <p class="projectCard__description">
+              Event: 3rd International Poster Competition for Young Researchers 2025
+              <br>
+              Institution/Organizer: UniV
+              <br>
+              Project Type: Collaborative Poster Presentation
+              <br>
+              Contribution: Presented with two teammates
+              <br>
+              Status: <span class="status-badge status-badge--presented">Presented</span>
+            </p>
+
+            <div class="projectCard__tags">
+              <span class="projectCard__tag">Women's Health</span>
+              <span class="projectCard__tag">PCOS</span>
+              <span class="projectCard__tag">Poster Presentation</span>
+            </div>
+
+            <div class="projectCard__placeholders">
+              <p>[ADD POSTER IMAGE]</p>
+              <p>[ADD POSTER PDF]</p>
+              <p>[ADD PERSONAL CONTRIBUTION]</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3: Biochemistry and Drug Discovery -->
+        <article class="projectCard">
+          <div class="projectCard__image">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--charcoal);">
+              <rect x="3" y="3" width="7" height="7"/>
+              <rect x="14" y="3" width="7" height="7"/>
+              <rect x="25" y="3" width="7" height="7"/>
+              <rect x="3" y="14" width="7" height="7"/>
+              <rect x="14" y="14" width="7" height="7"/>
+              <rect x="25" y="14" width="7" height="7"/>
+              <rect x="3" y="25" width="7" height="7"/>
+              <rect x="14" y="25" width="7" height="7"/>
+              <rect x="25" y="25" width="7" height="7"/>
+            </svg>
+          </div>
+          <div class="projectCard__content">
+            <h3 class="projectCard__title">Biochemistry and Drug Discovery: Drug Discovery Pipeline and Structure-Based Drug Design</h3>
+            <p class="projectCard__description">
+              Project Type: Group Academic Presentation
+              <br>
+              Topics:
+              <br>
+              <span class="topic-chip">Drug Discovery Pipeline</span>
+              <span class="topic-chip">Structure-Based Drug Design</span>
+              <span class="topic-chip">Role of Biochemistry in Drug Discovery</span>
+            </p>
+
+            <div class="projectCard__tags">
+              <span class="projectCard__tag">Group Presentation</span>
+              <span class="projectCard__tag">Biochemistry</span>
+              <span class="projectCard__tag">Drug Design</span>
+            </div>
+
+            <div class="projectCard__placeholders">
+              <p>[ADD STUDY GUIDE PDF]</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4: Academic Study Guide -->
+        <article class="projectCard">
+          <div class="projectCard__image">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--charcoal);">
+              <rect x="3" y="3" width="7" height="7"/>
+              <rect x="14" y="3" width="7" height="7"/>
+              <rect x="25" y="3" width="7" height="7"/>
+              <rect x="3" y="14" width="7" height="7"/>
+              <rect x="14" y="14" width="7" height="7"/>
+              <rect x="25" y="14" width="7" height="7"/>
+              <rect x="3" y="25" width="7" height="7"/>
+              <rect x="14" y="25" width="7" height="7"/>
+              <rect x="25" y="25" width="7" height="7"/>
+            </svg>
+          </div>
+          <div class="projectCard__content">
+            <h3 class="projectCard__title">Mitosis and Cell Division: Academic Study Guide</h3>
+            <p class="projectCard__description">
+              An academic learning resource covering mitosis and the stages of cell division.
+            </p>
+
+            <div class="projectCard__placeholders">
+              <p>[ADD STUDY GUIDE PDF]</p>
+            </div>
+
+            <span class="status-badge status-badge--academic-resource">Academic Resource</span>
+          </div>
+        </article>
+
+        <!-- Project 5: Research Roadmap -->
+        <article class="projectCard">
+          <div class="projectCard__image">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--charcoal);">
+              <rect x="3" y="3" width="7" height="7"/>
+              <rect x="14" y="3" width="7" height="7"/>
+              <rect x="25" y="3" width="7" height="7"/>
+              <rect x="3" y="14" width="7" height="7"/>
+              <rect x="14" y="14" width="7" height="7"/>
+              <rect x="25" y="14" width="7" height="7"/>
+              <rect x="3" y="25" width="7" height="7"/>
+              <rect x="14" y="25" width="7" height="7"/>
+              <rect x="25" y="25" width="7" height="7"/>
+            </svg>
+          </div>
+          <div class="projectCard__content">
+            <h3 class="projectCard__title">Research Roadmap on Neurodevelopmental Outcomes in Preterm Infants</h3>
+            <p class="projectCard__description">
+              An academic research-planning resource exploring neurodevelopmental outcomes in preterm infants.
+            </p>
+
+            <div class="projectCard__placeholders">
+              <p>[ADD RESEARCH ROADMAP PDF]</p>
+            </div>
+
+            <span class="status-badge status-badge--research-planning">Research Planning</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Awards and Achievements ===== -->
+  <section class="awards" id="awards" aria-labelledby="awards-title">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title" id="awards-title">Awards and Achievements</h2>
+      </div>
+
+      <div class="awards__list">
+        <div class="awardItem">
+          <div class="awardItem__title">Silver Explorer Award</div>
+          <div class="awardItem__institution">
+            Event: 3rd International Poster Competition for Young Researchers 2025
+            <br>
+            Topic: Unhealthy Lifestyle, Sleep Disturbance and PCOS
+            <br>
+            Participation: Team Poster Presentation
+            <br>
+            Team Members: Three participants in total
+          </div>
+          <div class="awardItem__year">[ADD CERTIFICATE PDF]</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Leadership and Activities ===== -->
+  <section class="leadership" id="leadership" aria-labelledby="leadership-title">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title" id="leadership-title">Leadership and Activities</h2>
+      </div>
+
+      <div class="leadership__list">
+        <!-- Executive Member — Pharmacy Club -->
+        <div class="leadership__item">
+          <div class="leadership__role">Executive Member — Pharmacy Club</div>
+          <div class="leadership__institution">Manarat International University</div>
+          <div class="leadership__description">
+            <p>As an executive member of the Pharmacy Club, I contribute to academic engagement, organizational activities, and initiatives that support fellow pharmacy students. I value teamwork, communication, and creating opportunities for peer learning and professional development within the academic community.</p>
+          </div>
+        </div>
+
+        <!-- General Member — Debate Club -->
+        <div class="leadership__item">
+          <div class="leadership__role">General Member — Debate Club</div>
+          <div class="leadership__institution">Manarat International University</div>
+          <div class="leadership__description">
+            <p>As a general member of the Debate Club, I engage in organizational activities that develop communication skills, critical thinking, and confidence. I value the opportunity to participate in structured discussion, practice evidence-based argumentation, and collaborate with peers on intellectual discourse.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Skills ===== -->
+  <section class="skills" id="skills" aria-labelledby="skills-title">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title" id="skills-title">Skills</h2>
+      </div>
+
+      <div class="skills__grid">
+        <!-- Academic Skills -->
+        <div class="skillCategory">
+          <h3>Academic Skills</h3>
+          <div class="skillItem">Structured Note-Taking</div>
+          <div class="skillItem">Academic Presentation Design</div>
+          <div class="skillItem">Scientific Writing</div>
+          <div class="skillItem">Research Literature Review</div>
+        </div>
+
+        <!-- Five-Component Structured Note-Taking Framework -->
+        <div class="skillCategory">
+          <h3>Five-Component Structured Note-Taking Framework</h3>
+          <div class="framework-card">
+            <p class="framework-description">
+              A personal five-component framework developed and applied across academic coursework to organize concepts, improve understanding, and create structured study materials.
+            </p>
+            <p class="framework-placeholder">[ADD THE FIVE COMPONENTS OF THE FRAMEWORK]</p>
+          </div>
+        </div>
+
+        <!-- Digital Skills -->
+        <div class="skillCategory">
+          <h3>Digital Skills</h3>
+          <div class="skillItem">Canva — Academic Presentation Design</div>
+        </div>
+
+        <!-- Additional Skills -->
+        <div class="skillCategory">
+          <h3>Additional Skills</h3>
+          <div class="skillItem">[ADD LABORATORY SKILLS]</div>
+          <div class="skillItem">[ADD RESEARCH SOFTWARE]</div>
+          <div class="skillItem">[ADD PROGRAMMING SKILLS]</div>
+          <div class="skillItem">[ADD LANGUAGES AND PROFICIENCY LEVELS]</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Contact and Professional Links ===== -->
+  <section class="contact" id="contact" aria-labelledby="contact-title">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title" id="contact-title">Contact and Professional Links</h2>
+      </div>
+
+      <div class="contact__info">
+        <div class="contact__item">
+          <h4>Email</h4>
+          <a href="mailto:mahfuzasiddikakhan@gmail.com">mahfuzasiddikakhan@gmail.com</a>
+        </div>
+        <div class="contact__item">
+          <h4>Location</h4>
+          <p>Manarat International University, Dhaka, Bangladesh</p>
+        </div>
+      </div>
+
+      <div class="contact__links">
+        <h3>Professional Links</h3>
+        <div class="contact__social">
+          <a href="https://www.linkedin.com/in/mahfuza-siddika-khan-b1a396337/" class="contact__socialLink" aria-label="LinkedIn">
+            LinkedIn
+          </a>
+          <a href="https://orcid.org/[ADD ORCID PROFILE LINK]" class="contact__socialLink" aria-label="ORCID">
+            ORCID
+          </a>
+          <a href="https://scholar.google.com/[ADD GOOGLE SCHOLAR PROFILE LINK]" class="contact__socialLink" aria-label="Google Scholar">
+            Google Scholar
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Downloadable CV ===== -->
+  <section class="cv" id="cv" aria-labelledby="cv-title">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title" id="cv-title">Downloadable CV</h2>
+      </div>
+
+      <p class="cv__description">
+        A comprehensive resume of my academic and research journey is available for download. If the PDF does not yet exist, please see the placeholder information below.
+      </p>
+
+      <div class="cv__download">
+        <a href="assets/documents/Mahfuza_Siddika_Khan_CV.pdf" download class="btn btn--primary">
+          Download CV (PDF)
+        </a>
+        <p class="cv__placeholder">
+          If the CV PDF does not exist, add it to <code>assets/documents/Mahfuza_Siddika_Khan_CV.pdf</code>. See <a href="README.md">README.md</a> for setup instructions.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__copyright">
+          <p>Mahfuza Siddika Khan</p>
+          <p>Bachelor of Pharmacy Undergraduate | Manarat International University</p>
+        </div>
+        <div class="footer__bottom">
+          <p>&copy; 2026 Mahfuza Siddika Khan. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== JavaScript ===== -->
+  <script src="script.js"></script>
+</body>
+</html>
