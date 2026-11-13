@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mahfuza Siddika Khan – Portfolio</title>
+
+  <!-- Google Fonts (Inter) with fallback -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* --------------------------------------------------------------
+       CSS Variables (light / dark colour palette)
+       -------------------------------------------------------------- */
+    :root {
+      --bg: #fafafa;
+      --text: #212529;
+      --muted: #6c757d;
+      --accent: #2c3e50;
+      --accent-light: #3498db;
+      --card: #ffffff;
+      --border: #dee2e6;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #121212;
+        --text: #e0e0e0;
+        --muted: #b0b0b0;
+        --accent: #3498db;
+        --card: #1e1e1e;
+        --border: #333333;
+      }
+    }
+
+    /* --------------------------------------------------------------
+       Base resets
+       -------------------------------------------------------------- */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+                   "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--accent-light);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* --------------------------------------------------------------
+       Navigation – sticky, responsive
+       -------------------------------------------------------------- */
+    nav {
+      position: sticky;
+      top: 0;
+      background: var(--card);
+      z-index: 100;
+      backdrop-filter: blur(6px);
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.95rem;
+      color: var(--text);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-light);
+    }
+
+    .theme-toggle {
+      background: none;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      color: var(--muted);
+    }
+
+    .theme-toggle:hover {
+      color: var(--accent);
+    }
+
+    /* --------------------------------------------------------------
+       Hero section
+       -------------------------------------------------------------- */
+    #hero {
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .hero-title {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-tagline {
+      font-size: 1.2rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .hero-intro {
+      max-width: 600px;
+      font-size: 1rem;
+      color: var(--muted);
+    }
+
+    /* --------------------------------------------------------------
+       Generic sections
+       -------------------------------------------------------------- */
+    section {
+      padding: 3rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    section h2 {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--border);
+    }
+
+    section h3 {
+      font-size: 1.25rem;
+      margin-top: 1.5rem;
+    }
+
+    /* --------------------------------------------------------------
+       Research cards grid
+       -------------------------------------------------------------- */
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .research-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .research-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-right: 0.5rem;
+    }
+
+    .badge.presented {
+      background: #27ae60;
+    }
+
+    .badge.in-writing {
+      background: #e67e22;
+    }
+
+    /* --------------------------------------------------------------
+       Awards list
+       -------------------------------------------------------------- */
+    .awards-list {
+      list-style: none;
+    }
+
+    .awards-list li {
+      margin-bottom: 0.75rem;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    .awards-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.15rem;
+      width: 4px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    /* --------------------------------------------------------------
+       Skills tags
+       -------------------------------------------------------------- */
+    .skills-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .skill-tag {
+      background: var(--border);
+      color: var(--text);
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+
+    /* --------------------------------------------------------------
+       Contact links
+       -------------------------------------------------------------- */
+    .contact-links a {
+      display: block;
+      margin-bottom: 0.8rem;
+      font-size: 1rem;
+    }
+
+    /* --------------------------------------------------------------
+       Placeholder flag (red italic)
+       -------------------------------------------------------------- */
+    .placeholder {
+      color: #e74c3c;   /* bright red, clearly flagged */
+      font-style: italic;
+    }
+
+    /* --------------------------------------------------------------
+       Footer
+       -------------------------------------------------------------- */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* --------------------------------------------------------------
+       Smooth scroll (only if the browser supports it)
+       -------------------------------------------------------------- */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* --------------------------------------------------------------
+       Theme‑toggle logic (stores preference in localStorage)
+       -------------------------------------------------------------- */
+    <script>
+      (function() {
+        const html = document.documentElement;
+        const toggle = document.querySelector('.theme-toggle');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const saved = localStorage.getItem('theme');
+        if (saved) {
+          html.setAttribute('data-theme', saved);
+        } else {
+          html.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+        }
+        toggle.addEventListener('click', () => {
+          const current = html.getAttribute('data-theme');
+          const next = current === 'dark' ? 'light' : 'dark';
+          html.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+        });
+      })();
+    </script>
+  </style>
+</head>
+
+<body>
+
+  <!-- ========================= NAV ========================= -->
+  <nav>
+    <div class="navbar">
+      <div class="logo">Mahfuza Siddika Khan</div>
+      <ul class="nav-links">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#awards">Awards</a></li>
+        <li><a href="#leadership">Leadership</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="theme-toggle" aria-label="Toggle theme">🌓</button>
+    </div>
+  </nav>
+
+  <!-- ========================= HERO ========================= -->
+  <section id="hero">
+    <div>
+      <h1 class="hero-title">Mahfuza Siddika Khan</h1>
+      <p class="hero-tagline">
+        Pharmacy student | Aspiring researcher in antimicrobial resistance and women's health
+      </p>
+      <p class="hero-intro">
+        Third‑year Pharmacy student at Manarat International University, Dhaka.
+        Passionate about drug discovery, antimicrobial resistance, and women's health research.
+      </p>
+    </div>
+  </section>
+
+  <!-- ========================= ABOUT ========================= -->
