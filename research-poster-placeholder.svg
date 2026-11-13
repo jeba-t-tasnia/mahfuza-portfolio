@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="280" viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="280" fill="#f8f9fa"/>
+  <rect width="400" height="5" fill="#dee2e6" transform="translate(0, 20)"/>
+  <rect width="400" height="5" fill="#dee2e6" transform="translate(0, 230)"/>
+  <text x="200" y="50" text-anchor="middle" font-family="Playfair Display, serif" font-size="20" fill="#888">Research Poster</text>
+  <text x="200" y="90" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#666">Placeholder for research poster image</text>
+  <rect x="60" y="130" width="280" height="120" fill="#e9ecef" rx="8"/>
+  <text x="200" y="175" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#999">[ADD POSTER IMAGE]</text>
+  <text x="200" y="200" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#666">ICAAD 2026 / PCOS Research</text>
+</svg>
